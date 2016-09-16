@@ -1,0 +1,56 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.app {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Raleway';
+}
+
+.header {
+	background-color: white;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.name {
+	width: 50%;
+}
+
+.logo {
+	width: 215px;
+	height: 185px;
+}
+
+.message {
+	max-width: 550px;
+	text-align: center;
+	line-height: 32px;
+	margin-bottom: 50px;
+}
+
+.counter {
+    width: 30vw;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(217, 165, 97);
+}
+
+.value {
+    color: red;
+    font-weight: bold;
+}
+
+.button {
+    margin: 5px;
+}

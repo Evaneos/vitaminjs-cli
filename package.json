@@ -1,0 +1,25 @@
+{
+  "name": "vitamin-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "vitamin": "./vitamin"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "generator-license": "^4.0.0",
+    "inquirer-npm-name": "^2.0.0",
+    "liftoff": "^2.3.0",
+    "lodash.kebabcase": "^4.1.1",
+    "minimist-argv": "^1.0.0",
+    "parse-author": "^1.0.0",
+    "yeoman-environment": "^1.6.3",
+    "yeoman-generator": "^0.24.1"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "routes": "./src/routes",
+    "redux": {
+        "reducers": "./src/reducers"
+    }
+}
