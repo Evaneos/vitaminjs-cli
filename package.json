@@ -10,6 +10,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Evaneos <dev@evaneos.com> (http://www.evaneos.com)",
+  "contributors": [
+    "Christophe Hurpeau <christophe@evaneos.com> (https://christophe.hurpeau.com)",
+    "Tony Mxa <tony@evaneos.com>"
+  ],
   "license": "ISC",
   "dependencies": {
     "commander": "^2.9.0",
