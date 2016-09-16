@@ -1,10 +1,10 @@
 {
-  "name": "vitamin-cli",
-  "version": "1.0.2",
-  "description": "cli for vitamin",
+  "name": "vitaminjs-cli",
+  "version": "1.0.0",
+  "description": "cli for vitaminjs",
   "main": "index.js",
   "bin": {
-    "vitamin": "./vitamin"
+    "vitaminjs": "./vitaminjs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
