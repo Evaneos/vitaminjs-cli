@@ -7,7 +7,7 @@ cli for [vitaminjs](https://npmjs.com/package/vitaminjs)
 ## Install
 
 ```sh
-npm install -g --save vitaminjs-cli
+npm install -g vitaminjs-cli
 ```
 
 ## Usage
