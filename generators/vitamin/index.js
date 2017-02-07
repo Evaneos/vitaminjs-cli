@@ -135,7 +135,7 @@ module.exports = generators.Base.extend({
                 "react-router": "^2.7.0",
                 "react-router-redux": "^4.0.5",
                 "redux": "^3.6.0",
-                "vitaminjs": "^1.0.0-beta11"
+                "vitaminjs": "^1.0.0-rc4"
             }
         }, pkg);
 
