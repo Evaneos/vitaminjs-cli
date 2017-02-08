@@ -1,4 +1,4 @@
-import { Route } from 'react-router';
+import { Route } from 'vitaminjs';
 import Index from './Index';
 
 export default (

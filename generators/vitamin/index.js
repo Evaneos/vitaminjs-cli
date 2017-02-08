@@ -1,25 +1,25 @@
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
 const parseAuthor = require('parse-author');
 const path = require('path');
 const kebabCase = require('lodash.kebabcase');
 
-module.exports = generators.Base.extend({
-    constructor: function() {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
         this.option('blank', {
             type: Boolean,
             required: false,
             defaults: false,
             desc: 'Generates blank project'
         });
-        this.option('skipNpmInstall', {
+        this.option('skipYarnInstall', {
             type: Boolean,
             required: false,
             defaults: false,
-            desc: 'Skips npm install'
+            desc: 'Skips yarn install'
         });
-    },
+    }
 
     initializing() {
         this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
@@ -41,33 +41,37 @@ module.exports = generators.Base.extend({
             this.props.authorEmail = parsedAuthor.email;
             this.props.authorUrl = parsedAuthor.url;
         }
-    },
+    }
 
-    prompting: {
-        askForModuleName() {
+    prompting() {
+        return this.prompt({
+            type: 'confirm',
+            name: 'private',
+            message: 'Private package ?',
+            default: this.props.private === true,
+        }).then((props) => {
+            this.props.private = props.private;
+        }).then(() => {
             if (this.pkg.name || this.options.name) {
                 this.props.name = this.pkg.name || this.options.name;
                 return;
             }
 
-            return askName({
+            const prompt = {
                 name: 'name',
                 message: 'Module Name',
                 default: path.basename(process.cwd()),
                 filter: kebabCase,
                 validate: str => str.length > 0,
-            }, this).then(({ name }) => {
-                this.props.name = name;
-            });
-        },
+            };
 
-   askFor() {
-            var prompts = [{
-                type: 'confirm',
-                name: 'private',
-                message: 'Private package ?',
-                default: this.props.private === true,
-            }, {
+
+            return (this.props.private ? this.prompt([prompt]) : askName(prompt, this))
+                .then(({ name }) => {
+                    this.props.name = name;
+                });
+        }).then(() => {
+            return this.prompt([{
                 name: 'description',
                 message: 'Description',
                 when: !this.props.description,
@@ -88,33 +92,30 @@ module.exports = generators.Base.extend({
                 message: 'Author\'s Homepage',
                 when: !this.props.authorUrl,
                 store: true,
-            }];
-
-            return this.prompt(prompts).then(props => {
+            }]).then((props) => {
                 Object.assign(this.props, props);
             });
-        },
-    },
+        })
+    }
 
-    default: function () {
+    default() {
         if (this.options.license && !this.fs.exists(this.destinationPath('LICENSE'))) {
-            this.composeWith('license', {
+            this.composeWith(require.resolve('generator-license/app'), {
                 options: {
                     name: this.props.authorName,
                     email: this.props.authorEmail,
                     website: this.props.authorUrl,
                     defaultLicense: 'ISC',
                 }
-            }, {
-                local: require.resolve('generator-license/app'),
             });
         }
         if (this.options.blank) {
-            this.composeWith('vitamin:blank', {}, {local: require.resolve('../blank')});
+            this.composeWith(require.resolve('../blank'), {});
         } else {
-            this.composeWith('vitamin:counter', {}, {local: require.resolve('../counter')});
+            this.composeWith(require.resolve('../counter'), {});
         }
-    },
+    }
+
     writing() {
         // Re-read the content at this point because a composed generator might modify it.
         const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
@@ -123,19 +124,13 @@ module.exports = generators.Base.extend({
             name: kebabCase(this.props.name),
             version: '0.0.0',
             description: this.props.description,
-            author: `${this.props.authorName} <${this.props.authorEmail}>${
-                this.props.authorUrl && ` (${this.props.authorUrl})`}`,
+            author: `${this.props.authorName} <${this.props.authorEmail}>`
+                + `${this.props.authorUrl && ` (${this.props.authorUrl})`}`,
             keywords: [],
             dependencies: {
-                "async-props": "^0.3.2",
-                "isomorphic-style-loader": "^1.0.0",
-                "react": "^15.3.1",
-                "react-helmet": "^3.1.0",
-                "react-redux": "^4.4.5",
-                "react-router": "^2.7.0",
-                "react-router-redux": "^4.0.5",
-                "redux": "^3.6.0",
-                "vitaminjs": "^1.0.0-beta11"
+                "react": "^15.4.2",
+                "react-dom": "^15.4.2",
+                "vitaminjs": "^1.0.0-rc6"
             }
         }, pkg);
 
@@ -144,14 +139,11 @@ module.exports = generators.Base.extend({
         }
 
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    },
+    }
 
     installing() {
-        if (!this.options.skipNpmInstall) {
-            return this.npmInstall();
+        if (!this.options.skipYarnInstall) {
+            return this.yarnInstall();
         }
-    },
-
-    end() {
     }
-});
+};
