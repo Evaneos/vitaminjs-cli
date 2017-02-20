@@ -129,8 +129,12 @@ module.exports = class extends Generator {
             keywords: [],
             dependencies: {
                 "react": "^15.4.2",
-                "react-dom": "^15.4.2",
-                "vitaminjs": "^1.0.0-rc6"
+                "vitaminjs": "^1.0.0"
+            },
+            scripts: {
+                start: 'vitamin start',
+                build: 'vitamin build',
+                serve: 'vitamin serve',
             }
         }, pkg);
 
