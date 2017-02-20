@@ -1,4 +1,5 @@
-import { Helmet, withStyles } from 'vitaminjs';
+import { withStyles } from 'vitaminjs';
+import Helmet from 'vitaminjs/react-helmet';
 import s from './style.css'
 import Counter from './Counter';
 import logo from './logo.png';
