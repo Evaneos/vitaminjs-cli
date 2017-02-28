@@ -12,6 +12,11 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        this.fs.copy(this.templatePath('.vitaminrc'), this.destinationPath(this.options.destination, '.vitaminrc'));
+        ['.vitaminrc', '.gitignore'].forEach(filename => (
+            this.fs.copy(
+                this.templatePath(filename),
+                this.destinationPath(this.options.destination, filename)
+            )
+        ));
     }
 };

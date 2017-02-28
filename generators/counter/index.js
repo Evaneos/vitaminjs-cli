@@ -23,6 +23,11 @@ module.exports = class extends Generator {
                 this.destinationPath(this.options.destination, 'src/' + filename)
             )
         ));
-        this.fs.copy(this.templatePath('.vitaminrc'), this.destinationPath(this.options.destination, '.vitaminrc'));
+        ['.vitaminrc', '.gitignore'].forEach(filename => (
+            this.fs.copy(
+                this.templatePath(filename),
+                this.destinationPath(this.options.destination, filename)
+            )
+        ));
     }
 };
