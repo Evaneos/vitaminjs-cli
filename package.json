@@ -14,7 +14,7 @@
     "Christophe Hurpeau <christophe@evaneos.com> (https://christophe.hurpeau.com)",
     "Tony Mxa <tony@evaneos.com>"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
     "generator-license": "^5.1.0",
