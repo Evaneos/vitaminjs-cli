@@ -7,6 +7,7 @@ cli for [vitaminjs](https://npmjs.com/package/vitaminjs)
 ## Install
 
 ```sh
+yarn global add vitaminjs-cli
 npm install -g vitaminjs-cli
 ```
 
