@@ -1,5 +1,9 @@
 const Liftoff = require('liftoff');
 const argv = require('minimist-argv');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
+
+updateNotifier({ pkg }).notify();
 
 const vitamin = new Liftoff({
 	name: 'vitamin',
@@ -9,9 +13,9 @@ const vitamin = new Liftoff({
 		'.vitaminrc': {
 			up: {
 				path: '.',
-				findUp: true,	
+				findUp: true,
 			}
-			
+
 		}
 	}
 });
@@ -46,8 +50,7 @@ vitamin.launch({
 		.action(({ blank, skipNpmInstall }) => {
 			init({ blank, skipNpmInstall });
 		});
-		
+
 		program.parse(process.argv);
 	}
 });
-

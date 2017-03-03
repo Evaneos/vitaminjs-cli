@@ -24,6 +24,7 @@
     "minimist-argv": "^1.0.0",
     "mkdirp": "^0.5.1",
     "parse-author": "^1.0.0",
+    "update-notifier": "^2.1.0",
     "yeoman-environment": "^1.6.3",
     "yeoman-generator": "^1.1.0"
   }
