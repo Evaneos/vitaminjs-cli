@@ -1,7 +1,7 @@
 {
   "name": "vitaminjs-cli",
   "version": "1.2.0",
-  "description": "cli for vitaminjs",
+  "description": "CLI for vitaminjs",
   "main": "index.js",
   "bin": {
     "vitaminjs": "./vitaminjs"
@@ -11,7 +11,10 @@
   },
   "author": "Evaneos <dev@evaneos.com> (http://www.evaneos.com)",
   "contributors": [
+    "Antoine Lépée <antoine@evaneos.com",
     "Christophe Hurpeau <christophe@evaneos.com> (https://christophe.hurpeau.com)",
+    "Johan Girod <johan@evaneos.com>",
+    "Lucas Personnaz <lucas@evaneos.com>",
     "Tony Mxa <tony@evaneos.com>"
   ],
   "license": "MIT",

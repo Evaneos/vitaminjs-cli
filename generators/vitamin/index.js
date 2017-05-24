@@ -128,7 +128,8 @@ module.exports = class extends Generator {
                 + `${this.props.authorUrl && ` (${this.props.authorUrl})`}`,
             keywords: [],
             dependencies: {
-                "react": "^15.4.2",
+                "prop-types": "^15.5.8",
+                "react": "^15.5.2",
                 "vitaminjs": "^1.0.0"
             },
             scripts: {
